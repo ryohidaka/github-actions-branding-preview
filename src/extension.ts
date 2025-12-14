@@ -2,6 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TARGET_FILE_PATTERNS } from './constants';
+import { isInsideBrandingSection } from './utils';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -21,7 +22,15 @@ export function activate(context: vscode.ExtensionContext) {
             `Hover triggered in ${document.fileName} at ${position.line}:${position.character}`
           );
 
-          // TODO: implement hover contents
+          const text = document.getText();
+
+          // Do nothing unless cursor is inside the branding section
+          if (!isInsideBrandingSection(text, position.line)) {
+            console.debug(`Hover triggered outside branding`);
+            return undefined;
+          }
+
+          // TODO: build hover content
           return new vscode.Hover(new vscode.MarkdownString('ok'));
         } catch (err: unknown) {
           const message = err instanceof Error ? err.message : String(err);
