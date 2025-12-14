@@ -39,9 +39,9 @@ export function activate(context: vscode.ExtensionContext) {
             return undefined;
           }
 
-          createMarkdown(branding);
+          const md = createMarkdown(branding);
 
-          return new vscode.Hover(new vscode.MarkdownString('ok'));
+          return new vscode.Hover(md);
         } catch (err: unknown) {
           const message = err instanceof Error ? err.message : String(err);
           console.error(`Error in provideHover: ${message}`);

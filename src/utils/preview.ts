@@ -7,7 +7,7 @@ import { Branding, BrandingColor, IconColor } from '../types';
  *
  * @param branding - Object containing color and icon name
  */
-export function createMarkdown(branding: Branding) {
+export function createMarkdown(branding: Branding): vscode.MarkdownString {
   const { color, icon } = branding;
 
   // Determine icon color based on branding color
@@ -23,6 +23,29 @@ export function createMarkdown(branding: Branding) {
 
   const image = encodeSvgToBase64(svg);
   console.debug(`image: \n${image}`);
+
+  const md = new vscode.MarkdownString();
+  md.isTrusted = true;
+
+  // Heading
+  md.appendMarkdown(`### Preview\n\n`);
+
+  // Icon image
+  md.appendMarkdown(`![icon](${image})\n\n`);
+
+  // Branding YAML snippet
+  md.appendCodeblock(`branding:\n  icon: ${icon}\n  color: ${color}\n`, 'yaml');
+
+  // Divider
+  md.appendMarkdown(`\n---\n\n`);
+
+  // Reference link
+  md.appendMarkdown(
+    `[GitHub Docs: Branding in Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#branding)`
+  );
+
+  console.debug(md.value);
+  return md;
 }
 
 /**
