@@ -20,3 +20,11 @@ export enum BrandingColor {
   Purple = '#6f42c1',
   'Gray-Dark' = '#24292e'
 }
+
+/**
+ * Enum representing available icon color values for Feather icons.
+ */
+export enum IconColor {
+  White = '#fff',
+  Black = '#010409'
+}

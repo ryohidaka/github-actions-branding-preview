@@ -2,7 +2,11 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TARGET_FILE_PATTERNS } from './constants';
-import { isInsideBrandingSection, parseBranding } from './utils';
+import {
+  createMarkdown,
+  isInsideBrandingSection,
+  parseBranding
+} from './utils';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -35,7 +39,8 @@ export function activate(context: vscode.ExtensionContext) {
             return undefined;
           }
 
-          // TODO: build hover content
+          createMarkdown(branding);
+
           return new vscode.Hover(new vscode.MarkdownString('ok'));
         } catch (err: unknown) {
           const message = err instanceof Error ? err.message : String(err);
