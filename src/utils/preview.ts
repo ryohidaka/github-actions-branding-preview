@@ -1,4 +1,5 @@
 import * as feather from 'feather-icons';
+import * as vscode from 'vscode';
 import { Branding, BrandingColor, IconColor } from '../types';
 
 /**
@@ -19,6 +20,9 @@ export function createMarkdown(branding: Branding) {
 
   const svg = composeBrandSvg(iconSvg, color);
   console.debug(`svg: \n${svg}`);
+
+  const image = encodeSvgToBase64(svg);
+  console.debug(`image: \n${image}`);
 }
 
 /**
@@ -75,4 +79,15 @@ function composeBrandSvg(iconSvg: string, colorKey: string): string {
     ${iconSvg}
   </g>
 </svg>`;
+}
+
+/**
+ * Encode an SVG string to a base64 data URL.
+ *
+ * @param svg - SVG string to encode
+ * @returns Base64-encoded data URL
+ */
+function encodeSvgToBase64(svg: string): string {
+  const encoded = Buffer.from(svg).toString('base64');
+  return `data:image/svg+xml;base64,${encoded}`;
 }
