@@ -2,7 +2,7 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import { TARGET_FILE_PATTERNS } from './constants';
-import { isInsideBrandingSection } from './utils';
+import { isInsideBrandingSection, parseBranding } from './utils';
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
@@ -27,6 +27,11 @@ export function activate(context: vscode.ExtensionContext) {
           // Do nothing unless cursor is inside the branding section
           if (!isInsideBrandingSection(text, position.line)) {
             console.debug(`Hover triggered outside branding`);
+            return undefined;
+          }
+
+          const branding = parseBranding(text);
+          if (!branding) {
             return undefined;
           }
 
