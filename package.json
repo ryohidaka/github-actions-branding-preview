@@ -9,7 +9,10 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:yaml",
+    "onLanguage:yml"
+  ],
   "main": "./dist/extension.js",
   "contributes": {},
   "scripts": {
