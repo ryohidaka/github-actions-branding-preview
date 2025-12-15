@@ -17,3 +17,8 @@ Hover over the `branding:` section in supported YAML files (`action.yaml` and `a
 ## 🔗 For More Information
 
 - [GitHub Docs: Branding in Actions](https://docs.github.com/en/actions/reference/workflows-and-actions/metadata-syntax#branding)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
+for details.
