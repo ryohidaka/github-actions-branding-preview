@@ -5,11 +5,22 @@
   "version": "0.0.1",
   "publisher": "ryohidaka",
   "icon": "images/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryohidaka/github-actions-branding-preview.git"
+  },
+  "author": "ryohidaka <39184410+ryohidaka@users.noreply.github.com>",
+  "bugs": {
+    "url": "https://github.com/ryohidaka/github-actions-branding-preview/issues"
+  },
+  "homepage": "https://github.com/ryohidaka/github-actions-branding-preview#readme",
   "engines": {
     "vscode": "^1.107.0"
   },
   "categories": [
-    "Other"
+    "Debuggers",
+    "Other",
+    "Visualization"
   ],
   "activationEvents": [
     "onLanguage:yaml",
