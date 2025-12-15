@@ -2,7 +2,7 @@
   "name": "github-actions-branding-preview",
   "displayName": "GitHub Actions Branding Preview",
   "description": "Quickly preview the branding icon for GitHub Actions",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "ryohidaka",
   "icon": "images/icon.png",
   "repository": {
