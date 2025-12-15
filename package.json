@@ -3,6 +3,7 @@
   "displayName": "GitHub Actions Branding Preview",
   "description": "Quickly preview the branding icon for GitHub Actions",
   "version": "0.0.1",
+  "publisher": "ryohidaka",
   "engines": {
     "vscode": "^1.107.0"
   },
