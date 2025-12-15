@@ -4,6 +4,7 @@
   "description": "Quickly preview the branding icon for GitHub Actions",
   "version": "0.0.1",
   "publisher": "ryohidaka",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.107.0"
   },
