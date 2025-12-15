@@ -1,0 +1,108 @@
+name: Publish
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+  workflow_dispatch:
+    inputs:
+      publish_open-vsx:
+        description: 'Publish to Open VSX Registry'
+        required: false
+        type: boolean
+        default: true
+      publish_vscode-marketplace:
+        description: 'Publish to VSCode Marketplace'
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  # -------------------------------------------------
+  # Build and package VSIX
+  # -------------------------------------------------
+  build:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    outputs:
+      vsix_path: ${{ steps.package.outputs.vsixPath }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: latest
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run package
+
+      - name: Package extension (dry run)
+        id: package
+        uses: HaaLeo/publish-vscode-extension@v2
+        with:
+          pat: dummy_token
+          dryRun: true
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: vsix-artifact
+          path: ${{ steps.package.outputs.vsixPath }}
+
+  # -------------------------------------------------
+  # Publish to Open VSX Registry
+  # -------------------------------------------------
+  publish_open_vsx:
+    needs: build
+    if: >
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
+      (github.event_name == 'workflow_dispatch' && inputs.publish_open-vsx == true)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download VSIX artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: vsix-artifact
+          path: .
+
+      - name: Publish to Open VSX Registry
+        uses: HaaLeo/publish-vscode-extension@v2
+        with:
+          pat: ${{ secrets.OPEN_VSX_TOKEN }}
+          extensionFile: ${{ needs.build.outputs.vsix_path }}
+          skipDuplicate: true
+          dryRun: true
+
+  # -------------------------------------------------
+  # Publish to Visual Studio Marketplace
+  # -------------------------------------------------
+  publish_marketplace:
+    needs: build
+    if: >
+      (github.event_name == 'pull_request' && github.event.pull_request.merged == true) ||
+      (github.event_name == 'workflow_dispatch' && inputs.publish_vscode-marketplace == true)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download VSIX artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: vsix-artifact
+          path: .
+
+      - name: Publish to Visual Studio Marketplace
+        uses: HaaLeo/publish-vscode-extension@v2
+        with:
+          pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
+          registryUrl: https://marketplace.visualstudio.com
+          extensionFile: ${{ needs.build.outputs.vsix_path }}
+          skipDuplicate: true
+          dryRun: true
