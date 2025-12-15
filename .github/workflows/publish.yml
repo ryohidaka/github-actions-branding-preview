@@ -80,7 +80,6 @@ jobs:
           pat: ${{ secrets.OPEN_VSX_TOKEN }}
           extensionFile: ${{ needs.build.outputs.vsix_path }}
           skipDuplicate: true
-          dryRun: true
 
   # -------------------------------------------------
   # Publish to Visual Studio Marketplace
@@ -105,4 +104,3 @@ jobs:
           registryUrl: https://marketplace.visualstudio.com
           extensionFile: ${{ needs.build.outputs.vsix_path }}
           skipDuplicate: true
-          dryRun: true
