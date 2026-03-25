@@ -47,16 +47,16 @@
     "@types/vscode": "^1.110.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^10.0.3",
+    "eslint": "^10.1.0",
     "prettier": "^3.8.1",
     "ts-loader": "^9.5.4",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.57.0",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.57.2",
     "webpack": "^5.105.4",
-    "webpack-cli": "^6.0.1"
+    "webpack-cli": "^7.0.2"
   },
   "dependencies": {
     "feather-icons": "^4.29.2",
-    "yaml": "^2.8.2"
+    "yaml": "^2.8.3"
   }
 }
