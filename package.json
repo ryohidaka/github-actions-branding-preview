@@ -46,13 +46,13 @@
     "@types/node": "26.x",
     "@types/vscode": "^1.125.0",
     "@vscode/test-cli": "^0.0.15",
-    "@vscode/test-electron": "^3.0.0",
-    "eslint": "^10.7.0",
-    "prettier": "^3.9.5",
+    "@vscode/test-electron": "^3.1.0",
+    "eslint": "^10.8.0",
+    "prettier": "^3.9.6",
     "ts-loader": "^9.6.2",
     "typescript": "^7.0.2",
     "typescript-eslint": "^8.65.0",
-    "webpack": "^5.108.4",
+    "webpack": "^5.109.1",
     "webpack-cli": "^7.2.1"
   },
   "dependencies": {
