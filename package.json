@@ -47,13 +47,13 @@
     "@types/vscode": "^1.134.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
-    "eslint": "^10.9.0",
+    "eslint": "^10.9.1",
     "prettier": "^3.9.6",
     "ts-loader": "^9.6.2",
     "typescript": "^7.0.2",
-    "typescript-eslint": "^8.67.0",
-    "webpack": "^5.109.2",
-    "webpack-cli": "^7.2.2"
+    "typescript-eslint": "^8.68.0",
+    "webpack": "^5.110.1",
+    "webpack-cli": "^7.2.3"
   },
   "dependencies": {
     "feather-icons": "^4.29.2",
