@@ -44,19 +44,19 @@
     "@types/feather-icons": "^4.29.4",
     "@types/mocha": "^10.0.10",
     "@types/node": "26.x",
-    "@types/vscode": "^1.136.0",
+    "@types/vscode": "^1.137.0",
     "@vscode/test-cli": "^0.0.15",
     "@vscode/test-electron": "^3.1.0",
     "eslint": "^10.10.0",
     "prettier": "^3.9.6",
     "ts-loader": "^9.6.2",
     "typescript": "^7.0.2",
-    "typescript-eslint": "^8.69.0",
+    "typescript-eslint": "^8.70.0",
     "webpack": "^5.110.3",
     "webpack-cli": "^7.2.3"
   },
   "dependencies": {
     "feather-icons": "^4.29.2",
-    "yaml": "^2.9.0"
+    "yaml": "^2.9.1"
   }
 }
